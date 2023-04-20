@@ -1,6 +1,9 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const routes = require('./controller/itemController')
+const itemRoutes = require('./controller/itemController')
+const cartItemRoutes = require('./controller/cartItemController')
+const shipmentRoutes = require('./controller/shipmentController')
+
 const cors = require('cors');
 
 const connectionString = "mongodb+srv://rusiru:rusiru123@medixo.is6j3xo.mongodb.net/medixo?retryWrites=true&w=majority"
@@ -20,7 +23,8 @@ const app = express()
 
 app.use(express.json())
 app.use(cors());
-app.use('/api', routes)
-
+app.use('/api', itemRoutes)
+app.use('/api', cartItemRoutes)
+app.use('/api', shipmentRoutes)
 
 app.listen(3001, () => { console.log("Server running on port 3001...") })
